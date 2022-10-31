@@ -2,6 +2,12 @@
 
 As a user, so that I can manage my account and book/ list rooms I would like to be able to sign up for an account.
 
+**Implementation:**
+1. Database containing a users table - email address, mobile number, password
+2. A create account form in a webpage, that has post methods for adding the above details
+3. A login form in a webpage that can access the database and verify a user has an account
+4. Use active record to handle authentication of users
+
 As a signed-in user, I would like to be able to list spaces for rent.
 
 As a signed-in user, so that I can provide a detailed description for my space, I would like to be able to add a title, description and price per night.
