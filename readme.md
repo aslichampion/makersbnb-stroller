@@ -21,9 +21,15 @@ As a signed-in user I would like to be able to request to rent a space (for one 
 As a signed-in user who owns a space that has been requested for rental, I would like to be able to approve or deny that request.
 
 As a user I would like to see only rooms that are available and have not already been booked by another user.
+**Implementation:**
+-Search database by date, producing search results which exclude rooms that have already been booked.
+-Webpage displaying avaliable rooms- with details and images
 
 As a user I would like my rooms to rent to still show as available until I have confirmed a booking.
-
+**Implementation:**
+-search result showing rooms avaliable on specific date only updates after booking has been confirmed, not when booking is made.
+-webpage of search results updates after booking has been confirmed, to ensure no double bookings
+-if room is requested again after first request and before confirmation need a way to inform unsucessful user- via email
 
 As a user I would like to receive email notifications whenever one of the following happens:
 
@@ -35,6 +41,11 @@ As a user I would like to receive email notifications whenever one of the follow
 6. I request to book a space.
 7. My request to book a space is confirmed.
 8. My request to book a space is denied.
+
+**Implementation:**
+Using email entry from user table a notification will be sent to the user after each of the previous events.
+The message will be different depending on the users input/outcome of that input.
+These messages will expect no reply.
 
 As a user I would like to receive a text message to a provided number whenever one of the following happens:
 
