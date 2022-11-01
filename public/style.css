@@ -1,10 +1,45 @@
-p {
-    color:green;
-    text-align: center;
+.page-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
-h1 {
-    color:blue;
-    text-align: center;
+.page-heading {
+  font-size: 4em;
+  font-weight: 700;
+  align-self: center;
 }
 
+.spaces-listings {
+  align-self: center;
+}
+
+.spaces-card {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 10px;
+  height: 20vh;
+  left: 25vw;
+  border: solid 2px black;
+  border-radius: 12px;
+  background: lightgray;
+}
+
+.spaces-title {
+  align-self: center;
+  width: 40%;
+  font-size: 2em;
+  font-weight: 500;
+}
+
+.spaces-add-button {
+  align-self: center;
+  height: 50%;
+  font-size: 1.3em;
+  font-weight: 700;
+  width: 33%;
+  background: darkslateblue;
+  color: lightyellow;
+  border-radius: 25px;
+}

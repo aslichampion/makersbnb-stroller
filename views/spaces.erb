@@ -1,20 +1,18 @@
 <html>
-    
-    <head>
-        <title>Spaces</title>
-        <link ref="stylesheet" href="/style.css" />
-    </head>
-    
-    <body>
-        <h1>Spaces</h1>
-
+  <head>
+    <title>Spaces</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-content">
+      <h1 class="page-heading">Spaces</h1>
+      <div class="spaces-listings">
         <%@spaces.each do |space|%>
-            <div>
-                <p><%=space.name%></p> <input type="button" value="Book this space"/>
-            </div>
+          <div class="spaces-card">
+            <p class="spaces-title"><%=space.name%></p> <input class="spaces-add-button" type="button" value="Book this space"/>
+          </div>
         <%end%>
-
-
-    </body>
-
+      </div>
+    </div>
+  </body>
 </html>
