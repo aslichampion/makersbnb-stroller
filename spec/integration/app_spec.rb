@@ -34,4 +34,17 @@ describe Application do
         end
     end
 
+    context "POST /spaces" do
+        it 'adds a new space' do
+            response = post('/spaces', name:'Island')
+            expect(response.status).to eq(200)
+            expect(response.body).to eq('')
+            
+            response = get('/spaces')
+            expect(response.status).to eq(200)
+            expect(response.body).to include('Island')
+        end
+    end
+
+
 end

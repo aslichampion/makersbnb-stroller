@@ -20,5 +20,15 @@ describe SpaceRepository do
         expect(spaces.length).to eq(5)
     end
 
+    it 'creates a new space in the database' do
+        repo = SpaceRepository.new
+        new_space = Space.new
+        new_space.name = "Island"
+        repo.create(new_space)
+        spaces = repo.all
+        expect(spaces.length).to eq(6)
+        expect(spaces.last.name).to eq("Island")
+    end
+
 end  
 
