@@ -1,14 +1,20 @@
 <html>
-<head></head>
-<body>
-<h1>Spaces</h1>
+    
+    <head>
+        <title>Spaces</title>
+        <link ref="stylesheet" href="/style.css" />
+    </head>
+    
+    <body>
+        <h1>Spaces</h1>
 
-<%@spaces.each do |space|%>
-    <div>
-        <%=space.name%> <input type="button" value="Book this space"/>
-    </div>
-<%end%>
+        <%@spaces.each do |space|%>
+            <div>
+                <p><%=space.name%></p> <input type="button" value="Book this space"/>
+            </div>
+        <%end%>
 
 
-</body>
+    </body>
+
 </html>
