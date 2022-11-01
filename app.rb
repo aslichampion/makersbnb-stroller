@@ -25,5 +25,21 @@ class Application < Sinatra::Base
 
     end
 
+    get '/spaces/new' do
+
+        return erb(:new_space)
+
+    end
+
+    post '/spaces' do
+
+        repo = SpaceRepository.new
+        new_space = Space.new
+        new_space.name = params[:name]
+        repo.create(new_space)
+        return erb(:index)
+
+    end
+
 end
 
