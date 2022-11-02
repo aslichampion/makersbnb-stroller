@@ -78,5 +78,15 @@ class Application < Sinatra::Base
 
     end
 
+    get '/bookings' do
+
+        repo = BookingRepository.new
+        # @users = repo.all
+        # return erb(:spaces)
+        @bookings = repo.all
+        return erb(:bookings)
+    
+    end
+
 end
 
