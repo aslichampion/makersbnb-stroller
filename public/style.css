@@ -109,6 +109,19 @@ p {
   /* border: 2px solid red; */
 }
 
+a.button {
+  align-self: center;
+  height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 10px;
+  background: darkslateblue;
+  color: lightyellow;
+  border-radius: 25px;
+  /* border: 2px solid red; */
+}
+
 .spaces-price {
   align-self:inherit;
   justify-self: center;
