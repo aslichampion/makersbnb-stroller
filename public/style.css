@@ -42,8 +42,9 @@ p {
   justify-content: space-around;
   margin: 20px;
   min-height: 40vh;
-  min-width: 30em;
-  max-width: 30em;
+  width: 30em;
+  min-height: 15em;
+  max-height: 20em;
   border: solid 2px black;
   border-radius: 12px;
   background: lightgray;
