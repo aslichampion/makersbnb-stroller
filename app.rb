@@ -39,6 +39,12 @@ class Application < Sinatra::Base
     
     end
 
+    get '/users/new' do
+
+        return erb(:new_user)
+
+    end
+
     post '/users' do
 
         repo = UserRepository.new
@@ -46,12 +52,12 @@ class Application < Sinatra::Base
         new_user.email = params[:email]
         new_user.password = params[:password]
         new_user.sms = params[:sms]
+        
         repo.create(new_user)
+        
         return ''
 
     end
-
-
 
     get '/spaces/new' do
 
