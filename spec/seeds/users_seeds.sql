@@ -16,7 +16,7 @@ CREATE SEQUENCE IF NOT EXISTS users_id_seq;
 
 -- Table Definition
 CREATE TABLE "public"."users" (
-    "id" int4 NOT NULL DEFAULT nextval('users_id_seq'::regclass),
+    "id" SERIAL,
     "email" text,
     "password" text,
     "sms" text,

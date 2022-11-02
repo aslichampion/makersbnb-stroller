@@ -2,9 +2,9 @@ require "rack/test"
 require_relative '../../app'
 
 def reset_spaces_table
-    seed_sql = File.read('spec/seeds/spaces_seeds.sql')
-    connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
-    connection.exec(seed_sql)
+  seed_sql = File.read('spec/seeds/spaces_seeds.sql')
+  connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
+  connection.exec(seed_sql)
 end
   
 describe Application do
@@ -44,6 +44,26 @@ describe Application do
             expect(response.status).to eq(200)
             expect(response.body).to include('Island')
         end
+    end
+
+    context "GET /users" do
+      it 'returns a list of users' do
+          response = get('/users')
+          expect(response.status).to eq(200)
+          expect(response.body).to include('test@test.com')
+      end
+    end
+
+    context "POST /users" do
+      it 'adds a new user' do
+          response = post('/users', email:'new2@new.com', password:'newpassword2', sms:'11111111111')
+          expect(response.status).to eq(200)
+          expect(response.body).to include('')
+          
+          response = get('/users')
+          expect(response.status).to eq(200)
+          expect(response.body).to include('new2@new.com')
+      end
     end
 
 
