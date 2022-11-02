@@ -3,7 +3,7 @@ require 'space_repository'
 
 
 def reset_spaces_table
-    seed_sql = File.read('spec/space_seeds.sql')
+    seed_sql = File.read('spec/seeds/spaces.sql')
     connection = PG.connect({ host: '127.0.0.1', dbname: 'makersbnb_test' })
     connection.exec(seed_sql)
 end
