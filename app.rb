@@ -35,6 +35,9 @@ class Application < Sinatra::Base
         repo = SpaceRepository.new
         new_space = Space.new
         new_space.name = params[:name]
+        new_space.photo_url = params[:photo_url]
+        new_space.description = params[:description]
+        new_space.price_per_night = params[:price_per_night]
         repo.create(new_space)
         return erb(:index)
 
