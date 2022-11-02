@@ -52,5 +52,25 @@ describe Application do
         end
     end
 
+    context "GET /users" do
+      it 'returns a list of users' do
+          response = get('/users')
+          expect(response.status).to eq(200)
+          expect(response.body).to include('test@test.com')
+      end
+    end
+
+    context "POST /users" do
+      it 'adds a new user' do
+          response = post('/users', email:'new2@new.com', password:'newpassword2', sms:'11111111111')
+          expect(response.status).to eq(200)
+          expect(response.body).to include('')
+          
+          response = get('/users')
+          expect(response.status).to eq(200)
+          expect(response.body).to include('new2@new.com')
+      end
+    end
+
 
 end
