@@ -14,12 +14,12 @@
           <div class="spaces-card">
             <div class="spaces-left-content">
               <h2 class="spaces-title"><%=space.name%></h2>
-              <p class="spaces-description">A short description of the space will go here</p>
+              <p class="spaces-description"><%=space.description%></p>
             </div>
-            <div class="spaces-right-content" style="background: center / cover no-repeat url(beach-house.jpeg)" >
+            <div class="spaces-right-content" style="background: center / cover no-repeat url(<%=space.photo_url%>)" >
               <div class="image-overlay">               
                 <input class="spaces-add-button" type="button" value="Book Now"/>
-                <p class="spaces-price">For £xx.xx per night!</p>
+                <p class="spaces-price">For £<%=space.price_per_night%> per night!</p>
               </div> 
             </div>
           </div>
