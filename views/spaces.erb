@@ -6,10 +6,19 @@
   <body>
     <div class="page-content">
       <h1 class="page-heading">Spaces</h1>
-      <div class="spaces-listings">
+      <div class="spaces-listings split">
         <%@spaces.each do |space|%>
           <div class="spaces-card">
-            <p class="spaces-title"><%=space.name%></p> <input class="spaces-add-button" type="button" value="Book this space"/>
+            <div class="spaces-left-content">
+              <h2 class="spaces-title"><%=space.name%></h2>
+              <p class="spaces-description">A short description of the space will go here</p>
+            </div>
+            <div class="spaces-right-content" style="background: center / cover no-repeat url(beach-house.jpeg)" >
+              <div class="image-overlay">               
+                <input class="spaces-add-button" type="button" value="Book Now"/>
+                <p class="spaces-price">For £xx.xx per night!</p>
+              </div> 
+            </div>
           </div>
         <%end%>
       </div>
