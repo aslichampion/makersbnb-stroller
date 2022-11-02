@@ -1,14 +1,30 @@
 <html>
-<head></head>
-<body>
-<h1>Spaces</h1>
-
-<%@spaces.each do |space|%>
-    <div>
-        <%=space.name%> <input type="button" value="Book this space"/>
+  <head>
+    <title>Spaces</title>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+  </head>
+  <body>
+    <div class="page-content">
+      <h1 class="page-heading">Spaces</h1>
+      <h2 style=text-align:center>Here is a list of all the wonderful spaces currently available for rent</h2>
+      <%# <input class="spaces-list-button" type="button" value="List a Space" /> %>
+      <a href="/spaces/new" class="button">List a space</a>
+      <div class="spaces-listings split">
+        <%@spaces.each do |space|%>
+          <div class="spaces-card">
+            <div class="spaces-left-content">
+              <h2 class="spaces-title"><%=space.name%></h2>
+              <p class="spaces-description">A short description of the space will go here</p>
+            </div>
+            <div class="spaces-right-content" style="background: center / cover no-repeat url(beach-house.jpeg)" >
+              <div class="image-overlay">               
+                <input class="spaces-add-button" type="button" value="Book Now"/>
+                <p class="spaces-price">For £xx.xx per night!</p>
+              </div> 
+            </div>
+          </div>
+        <%end%>
+      </div>
     </div>
-<%end%>
-
-
-</body>
+  </body>
 </html>
