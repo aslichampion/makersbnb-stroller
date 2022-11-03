@@ -26,6 +26,14 @@ describe Application do
       end
     end
 
+    context "GET /spaces/:start_date/:nights" do
+      it 'returns a list of spaces' do
+          response = get('/spaces/2022-05-01/1')
+          expect(response.status).to eq(200)
+          expect(response.body).not_to include('Seaside retreat')
+      end
+  end
+
     context "GET /spaces" do
         it 'returns a list of spaces' do
             response = get('/spaces')

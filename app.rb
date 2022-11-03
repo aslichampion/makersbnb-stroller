@@ -17,6 +17,15 @@ class Application < Sinatra::Base
         return erb(:index)
     end
 
+    get '/spaces/:start_date/:nights' do
+        start_date = params[:start_date]
+        number_of_nights = params[:nights].to_i
+        repo = SpaceRepository.new
+        @spaces = repo.find(start_date, number_of_nights)
+        return erb(:spaces)
+
+    end
+
     get '/spaces' do
 
         repo = SpaceRepository.new
