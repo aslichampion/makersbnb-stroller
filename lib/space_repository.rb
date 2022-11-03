@@ -41,6 +41,6 @@ class SpaceRepository
         space.price_per_night = result_set[0]['price_per_night']
     
         return space
-      end
+    end
 
 end
