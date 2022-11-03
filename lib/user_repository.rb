@@ -25,4 +25,35 @@ class UserRepository
         return user
 
     end
+
+    def sign_in(email, submitted_password)
+        
+        #Unable at this point to get Bcrypt to match sucessfully, continue with plain text passwords.
+
+        user = find_by_email(email)
+    
+        return nil if user.nil?
+
+        if submitted_password == user.password
+          return "yay"
+        else
+          return "nope"
+        end
+    end
+    
+    def find_by_email(email)
+        sql = 'SELECT id, email, password, sms FROM users WHERE email = $1;'
+        result_set = DatabaseConnection.exec_params(sql, [email])
+    
+        user = User.new
+        user.id = result_set[0]['id'].to_i
+        user.email = result_set[0]['email']
+        user.password = result_set[0]['password']
+        user.sms = result_set[0]['sms']
+    
+        return user
+    end
+
+
+
 end

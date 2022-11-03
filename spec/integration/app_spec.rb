@@ -40,8 +40,7 @@ describe Application do
               photo_url: "https://images.unsplash.com/photo-1505635552518-3448ff113",
               price_per_night:"10928"
             )
-            expect(response.status).to eq(200)
-            expect(response.body).to include('sucessfully added')
+            expect(response.status).to eq(302)
             
             response = get('/spaces')
             expect(response.status).to eq(200)
