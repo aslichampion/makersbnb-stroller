@@ -14,13 +14,9 @@
 
           <label for="nights">Number of nights:</label>
           <select name="nights">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
+            <% (1..7).each do |x| %>
+              <option value="<%= x.to_s %>"><%= x.to_s %></option>
+            <% end %>
           </select>
 
           <input type="submit" value="Filter Listings"/>
