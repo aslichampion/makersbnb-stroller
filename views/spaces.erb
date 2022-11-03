@@ -7,7 +7,25 @@
     <div class="page-content">
       <h1 class="page-heading">Spaces</h1>
       <h2 style=text-align:center>Here is a list of all the wonderful spaces currently available for rent</h2>
-      <%# <input class="spaces-list-button" type="button" value="List a Space" /> %>
+      <form METHOD="GET" action="/spaces">
+        <div>
+          <label for="start_date">Start date:</label>
+          <input type="date" name="start_date"/>
+
+          <label for="nights">Number of nights:</label>
+          <select name="nights">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+
+          <input type="submit" value="Filter Listings"/>
+        </div>
+      </form>
       <a href="/spaces/new" class="button">List a space</a>
       <div class="spaces-listings split">
         <%@spaces.each do |space|%>
@@ -17,10 +35,10 @@
               <p class="spaces-description"><%=space.description%></p>
             </div>
             <div class="spaces-right-content" style="background: center / cover no-repeat url(<%=space.photo_url%>)" >
-              <div class="image-overlay">               
+              <div class="image-overlay">
                 <input class="spaces-add-button" type="button" value="Book Now"/>
                 <p class="spaces-price">For £<%=space.price_per_night%> per night!</p>
-              </div> 
+              </div>
             </div>
           </div>
         <%end%>

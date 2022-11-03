@@ -17,21 +17,16 @@ class Application < Sinatra::Base
         return erb(:index)
     end
 
-    get '/spaces/:start_date/:nights' do
-        start_date = params[:start_date]
-        number_of_nights = params[:nights].to_i
-        repo = SpaceRepository.new
-        @spaces = repo.find(start_date, number_of_nights)
-        return erb(:spaces)
-
-    end
-
     get '/spaces' do
-
+        start_date = params[:start_date]
+        nights = params[:nights]
         repo = SpaceRepository.new
-        @spaces = repo.all
+        if start_date && start_date != "" && nights && nights != ""
+          @spaces = repo.find(start_date, nights.to_i)
+        else
+          @spaces = repo.all
+        end
         return erb(:spaces)
-
     end
 
     get '/users' do
@@ -43,9 +38,9 @@ class Application < Sinatra::Base
         response = users.map do |user|
             user.email
         end.join(', ')
-    
+
         return response
-    
+
     end
 
     get '/users/new' do
@@ -61,9 +56,9 @@ class Application < Sinatra::Base
         new_user.email = params[:email]
         new_user.password = params[:password]
         new_user.sms = params[:sms]
-        
+
         repo.create(new_user)
-        
+
         return ''
 
     end
@@ -94,7 +89,7 @@ class Application < Sinatra::Base
         # return erb(:spaces)
         @bookings = repo.all
         return erb(:bookings)
-    
+
     end
 
 end

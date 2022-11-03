@@ -9,15 +9,15 @@ def reset_bookings_table
 end
 
 describe BookingRepository do
-      
-    before(:each) do 
+
+    before(:each) do
         reset_bookings_table
     end
-    
+
     it 'returns all bookings' do
         repo = BookingRepository.new
         bookings = repo.all
-        expect(bookings.length).to eq(5)
+        expect(bookings.length).to eq(6)
     end
 
 end
