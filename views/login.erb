@@ -4,17 +4,22 @@
         <link rel="stylesheet" type="text/css" href="/style.css" />
     </head>
     <body>
-        <h1>Log in to your account!</h1>
+        <div>
+            <h1>Log in to your account!</h1>
 
-        <form METHOD="POST" action="/login">
-            <div>
-                <p>Please enter your details:</p>
-                <label for="email">E-Mail:</label>
-                <input type="text" name="email"/>
-                <label for="password">Password:</label>
-                <input type="text" name="password"/>
-                <input type="submit" value="Log in"/>
-            </div>
-        </form>
+            <form METHOD="POST" action="/login">
+                <div>
+                    <p>Please enter your details:</p>
+                    <label for="email">E-Mail:</label>
+                    <input type="text" name="email"/>
+                    <label for="password">Password:</label>
+                    <input type="text" name="password"/>
+                    <input type="submit" value="Log in"/>
+                </div>
+            </form>
+
+            <p>Don't have an account? Please <a href ="/users/new">sign-up here<a> instead.</p>
+
+        </div>
     </body>
 </html>

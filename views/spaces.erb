@@ -1,7 +1,8 @@
 <html>
   <head>
     <title>Spaces</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <%# <link rel="stylesheet" type="text/css" href="/style.css" /> %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
   <body>
     <div class="page-content">
@@ -20,30 +21,29 @@
           </select>
 
           <input type="submit" value="Filter Listings"/>
+
         </div>
       </form>
-      <a href="/spaces/new" class="button">List a space</a>
-      <div class="spaces-listings split">
-        <%@spaces.each do |space|%>
-          <div class="spaces-card">
-            <div class="spaces-left-content">
-              <h2 class="spaces-title"><%=space.name%></h2>
-              <p class="spaces-description"><%=space.description%></p>
-            </div>
-            <div class="spaces-right-content" style="background: center / cover no-repeat url(<%=space.photo_url%>)" >
 
-              <div class="image-overlay">               
-                <input class="spaces-add-button" 
-                type="button" 
-                value="Book Now!"
-                onclick="window.location.href='/space?id=<%=space.id%>'">
-                
-                <p class="spaces-price">For £<%=space.price_per_night%> per night!</p>
-              </div>
-            </div>
+      <a href="/spaces/new" class="button">List a space</a>
+
+      <div class="d-flex flex-row">
+        <%@spaces.each do |space|%>
+        <div class="p-2">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<%=space.photo_url%>" alt="<%=space.name%>">
+            <div class="card-body">
+              <h5 class="card-title"><%=space.name%></h5>
+              <p class="card-text"><%=space.description%></p>
+              <a href="/space?id=<%=space.id%>'" class="btn btn-primary">Book now!</a>
+              <p class="card-text"><small class="text-muted">For £<%=space.price_per_night%> per night.</small></p>
+            </div>       
           </div>
-        <%end%>
+        </div>
+        <%end%>  
       </div>
+
+
     </div>
   </body>
 </html>
