@@ -54,6 +54,7 @@ class Application < Sinatra::Base
 
     get '/space' do
         repo = SpaceRepository.new
+        # New code here
         @space = repo.find_by_id(params[:id])
         return erb(:space_detail)
     end
