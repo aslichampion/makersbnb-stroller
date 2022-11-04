@@ -31,8 +31,13 @@
               <p class="spaces-description"><%=space.description%></p>
             </div>
             <div class="spaces-right-content" style="background: center / cover no-repeat url(<%=space.photo_url%>)" >
-              <div class="image-overlay">
-                <input class="spaces-add-button" type="button" value="Book Now"/>
+
+              <div class="image-overlay">               
+                <input class="spaces-add-button" 
+                type="button" 
+                value="Book Now!"
+                onclick="window.location.href='/space?id=<%=space.id%>'">
+                
                 <p class="spaces-price">For £<%=space.price_per_night%> per night!</p>
               </div>
             </div>

@@ -66,4 +66,5 @@ class SpaceRepository
         end
         return spaces
     end
+
 end
