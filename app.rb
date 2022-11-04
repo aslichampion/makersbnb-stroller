@@ -41,11 +41,15 @@ class Application < Sinatra::Base
     end
 
     get '/spaces' do
-
+        start_date = params[:start_date]
+        nights = params[:nights]
         repo = SpaceRepository.new
-        @spaces = repo.all
+        if start_date && start_date != "" && nights && nights != ""
+          @spaces = repo.find(start_date, nights.to_i)
+        else
+          @spaces = repo.all
+        end
         return erb(:spaces)
-
     end
 
     get '/space' do
@@ -63,9 +67,9 @@ class Application < Sinatra::Base
         response = users.map do |user|
             user.email
         end.join(', ')
-    
+
         return response
-    
+
     end
 
     get '/users/new' do
@@ -81,9 +85,9 @@ class Application < Sinatra::Base
         new_user.email = params[:email]
         new_user.password = BCrypt::Password.create(params[:password])
         new_user.sms = params[:sms]
-        
+
         repo.create(new_user)
-        
+
         return ''
 
     end
@@ -104,6 +108,16 @@ class Application < Sinatra::Base
         new_space.price_per_night = params[:price_per_night]
         repo.create(new_space)
         return redirect('/spaces')
+
+    end
+
+    get '/bookings' do
+
+        repo = BookingRepository.new
+        # @users = repo.all
+        # return erb(:spaces)
+        @bookings = repo.all
+        return erb(:bookings)
 
     end
 
