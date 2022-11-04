@@ -1,3 +1,4 @@
+require 'bcrypt'
 require 'sinatra'
 require "sinatra/reloader"
 require_relative 'lib/database_connection'
@@ -8,12 +9,35 @@ DatabaseConnection.connect
 
 class Application < Sinatra::Base
 
+    enable :sessions
+
     configure :development do
       register Sinatra::Reloader
     end
 
     get '/' do
-        return erb(:index)
+        return erb(:bootstrap_test)
+    end
+
+    get '/login' do
+        return erb(:login)
+    end
+
+    post '/login' do
+        email = params[:email]
+        password = params[:password]
+    
+        user = UserRepository.new
+        user.find_by_email(email)
+    
+        if user.password == password
+          # Set the user ID in session
+          session[:user_id] = user.id
+    
+          return erb(:login_success)
+        else
+          return erb(:login_error)
+        end
     end
 
     get '/spaces' do
@@ -59,7 +83,7 @@ class Application < Sinatra::Base
         repo = UserRepository.new
         new_user = User.new
         new_user.email = params[:email]
-        new_user.password = params[:password]
+        new_user.password = BCrypt::Password.create(params[:password])
         new_user.sms = params[:sms]
 
         repo.create(new_user)
@@ -83,7 +107,7 @@ class Application < Sinatra::Base
         new_space.description = params[:description]
         new_space.price_per_night = params[:price_per_night]
         repo.create(new_space)
-        return erb(:index)
+        return redirect('/spaces')
 
     end
 
