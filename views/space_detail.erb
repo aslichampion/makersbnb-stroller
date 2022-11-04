@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+  </head>
+
+  <body>
+    <h1>Space:</h1>
+	<div class="spaces-description">
+       <p> Name: <%=@space.name%><br>
+        Price per night: £<%=@space.price_per_night%><br></p>
+        <img src="<%=@space.photo_url%>" alt="Photo of the space" style="width:500px;height:600px"><br>
+        <label for="date">Start Date:</label>
+        <input type="date" name="date"/><br>
+        <label for="nights">Number of nights:</label>
+        <input type="number" name="nights"/><br>
+        <input type="submit" value="Send Booking Request"/>
+    </div>
+  </body>
+</html>

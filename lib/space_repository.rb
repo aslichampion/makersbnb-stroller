@@ -29,4 +29,18 @@ class SpaceRepository
 
     end
 
+    def find(id)
+        sql = 'SELECT id, name, photo_url, description, price_per_night FROM spaces WHERE id = $1;'
+        result_set = DatabaseConnection.exec_params(sql, [id])
+    
+        space = Space.new
+        space.id = result_set[0]['id'].to_i
+        space.name = result_set[0]['name']
+        space.description = result_set[0]['description']
+        space.photo_url = result_set[0]['photo_url']
+        space.price_per_night = result_set[0]['price_per_night']
+    
+        return space
+    end
+
 end

@@ -7,8 +7,7 @@ require_relative 'lib/user_repository'
 DatabaseConnection.connect
 
 class Application < Sinatra::Base
-    # This allows the app code to refresh
-    # without having to restart the server.
+
     configure :development do
       register Sinatra::Reloader
     end
@@ -23,6 +22,12 @@ class Application < Sinatra::Base
         @spaces = repo.all
         return erb(:spaces)
 
+    end
+
+    get '/space' do
+        repo = SpaceRepository.new
+        @space = repo.find(params[:id])
+        return erb(:space_detail)
     end
 
     get '/users' do

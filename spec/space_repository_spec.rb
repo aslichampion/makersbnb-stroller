@@ -37,5 +37,14 @@ describe SpaceRepository do
         
     end
 
+    it 'finds one space' do
+        repo = SpaceRepository.new
+        space = repo.find(4)
+    
+        expect(space.id).to eq(4)
+        expect(space.name).to eq('City nights')
+        
+      end
+
 end  
 
