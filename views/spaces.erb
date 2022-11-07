@@ -1,49 +1,69 @@
 <html>
+
   <head>
     <title>Spaces</title>
-    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   </head>
-  <body>
-    <div class="page-content">
-      <h1 class="page-heading">Spaces</h1>
-      <h2 style=text-align:center>Here is a list of all the wonderful spaces currently available for rent</h2>
-      <form METHOD="GET" action="/spaces">
-        <div>
-          <label for="start_date">Start date:</label>
-          <input type="date" name="start_date"/>
 
+  <body>
+    <div class="container">
+      <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="20"><img src="/logo-makersbnb-2.svg" width="40" height="32"/></svg>
+        <span class="fs-4">makersbnb</span>
+      </a>
+      <%# to make nav active on page: active" aria-current="page" %>
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="/users/new" class="nav-link">Sign-up</a></li>
+        <li class="nav-item"><a href="/spaces" class="nav-link">Spaces</a></li>
+        <li class="nav-item"><a href="/spaces/new" class="nav-link">List a Space</a></li>
+      </ul>
+    </header>
+
+    <div class="container">
+      <h1>Spaces</h1><br>
+      <h2>Here is a list of all the wonderful spaces currently available for rent</h2>
+      <form METHOD="GET" action="/spaces">
+        <label for="start_date">Start date:</label>
+        <input type="date" name="start_date"/>
           <label for="nights">Number of nights:</label>
           <select name="nights">
-            <% (1..7).each do |x| %>
-              <option value="<%= x.to_s %>"><%= x.to_s %></option>
-            <% end %>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
           </select>
 
-          <input type="submit" value="Filter Listings"/>
-        </div>
+        <input type="submit" class="btn btn-outline-primary btn-sm" value="Filter Listings"/>
       </form>
-      <a href="/spaces/new" class="button">List a space</a>
-      <div class="spaces-listings split">
-        <%@spaces.each do |space|%>
-          <div class="spaces-card">
-            <div class="spaces-left-content">
-              <h2 class="spaces-title"><%=space.name%></h2>
-              <p class="spaces-description"><%=space.description%></p>
-            </div>
-            <div class="spaces-right-content" style="background: center / cover no-repeat url(<%=space.photo_url%>)" >
 
-              <div class="image-overlay">               
-                <input class="spaces-add-button" 
-                type="button" 
-                value="Book Now!"
-                onclick="window.location.href='/space?id=<%=space.id%>'">
-                
-                <p class="spaces-price">For £<%=space.price_per_night%> per night!</p>
-              </div>
-            </div>
+      <div class="d-flex flex-row flex-wrap justify-content-center">
+        <%@spaces.each do |space|%>
+        <div class="p-2">
+          <div class="card" style="width: 15rem;">
+            <img class="card-img-top" src="<%=space.photo_url%>" alt="<%=space.name%>">
+            <div class="card-body">
+              <h5 class="card-title"><%=space.name%></h5>
+              <p class="card-text"><%=space.description%></p>
+              <a href="/space?id=<%=space.id%>" class="btn btn-primary">Book now!</a>
+              <p class="card-text"><small class="text-muted">For £<%=space.price_per_night%> per night.</small></p>
+            </div>       
           </div>
+        </div>
         <%end%>
-      </div>
-    </div>
+
+       </div>  
+
+    <div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   </body>
+
 </html>
